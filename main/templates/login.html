@@ -1,0 +1,20 @@
+ <h1><a href="{% url 'home' %}">AlphaTech Solution</a></h1>
+<h2>Login</h2>
+{% if error %}<p>{{ error }}</p>{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+</form> 
+
+<a href="/accounts/google/login/">
+    <button type="button" style="background-color: #4285F4; color: white; padding: 10px; border: none; cursor: pointer;">
+        Login with Google
+    </button>
+</a>
+
+<hr> 
+
+<!-- Google login button -->
+

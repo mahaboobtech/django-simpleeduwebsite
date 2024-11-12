@@ -1,0 +1,18 @@
+<h1><a href="{% url 'home' %}">AlphaTech Solution</a></h1>
+<h2>Courses</h2>
+<ul>
+    {% for course in courses %}
+        <li>
+            {{ course.name }} - ${{ course.price }}
+            {% if user.is_authenticated %}
+                {% if course in user.purchased_courses.all %}
+                    <strong>(Purchased)</strong>
+                {% else %}
+                    <a href="{% url 'payment' course.id %}">Buy Now</a>
+                {% endif %}
+            {% else %}
+                <a href="{% url 'login' %}">Login to purchase</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,23 @@
+<h1><a href="{% url 'home' %}">AlphaTech Solution</a></h1>
+<h2>Payment for {{ course.name }}</h2>
+<p>Price: ₹{{ course.price }}</p>  <!-- Show price in INR (₹ symbol) -->
+
+<!-- Razorpay Payment Button -->
+<form action="{% url 'payment_success' %}" method="GET">
+    {% csrf_token %}
+    <input type="hidden" name="course_id" value="{{ course.id }}" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ razorpay_key_id }}"
+            data-amount="{{ amount }}"
+            data-currency="INR"
+            data-order_id="{{ razorpay_order_id }}"
+            data-buttontext="Pay with Razorpay"
+            data-name="AlphaTech Solution"
+            data-description="Purchase of {{ course.name }}"
+            data-image="https://your-logo-url.com/logo.png"
+            data-prefill.name="{{ request.user.username }}"
+            data-prefill.email="{{ request.user.email }}"
+            data-theme.color="#F37254">
+    </script>
+</form>
+

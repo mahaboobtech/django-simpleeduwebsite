@@ -1,0 +1,7 @@
+<h2>Courses</h2>
+<ul>
+    {% for course in courses %}
+        <li>{{ course.name }} - ${{ course.price }}
+        <a href="{% url 'payment' course.id %}">Buy Now</a></li>
+    {% endfor %}
+</ul>

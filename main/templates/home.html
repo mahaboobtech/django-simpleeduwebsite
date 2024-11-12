@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaTech Solution</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="{% url 'home' %}">AlphaTech Solution</a></h1>
+            <ul>
+                <!-- Home page link -->
+                <li><a href="{% url 'home' %}">Home</a></li>
+                
+                <!-- Courses link -->
+                <li><a href="{% url 'courses' %}">Courses</a></li>
+
+                <!-- If the user is logged in, show the logout button -->
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <!-- If the user is not logged in, show login and register buttons -->
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome to AlphaTech Solution</h2>
+        <p>Your one-stop solution for learning tech skills online.</p>
+        
+        <!-- Conditionally display content based on authentication status -->
+        {% if user.is_authenticated %}
+            <p>Hello, {{ user.username }}! You are logged in.</p>
+        {% else %}
+            <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to access your courses.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

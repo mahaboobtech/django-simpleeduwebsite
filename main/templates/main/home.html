@@ -1,0 +1,29 @@
+<!-- templates/home.html -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/styles.css' %}">
+
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaTech Solution</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="{% url 'home' %}">AlphaTech Solution</a></h1>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to AlphaTech Solution</h2>
+        <p>This is your main page content.</p>
+    </main>
+</body>
+</html>
